@@ -16,10 +16,9 @@ export class Provider extends Component {
       }`
     );
 
-    //console.log(resp.data.message.body.track_list)
+    
     this.setState({ track_list: result.data.message.body.track_list });
-    //     })
-    //     .catch(err => console.log(err));
+   
   }
   render() {
     return (
