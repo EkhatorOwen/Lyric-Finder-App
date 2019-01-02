@@ -16,9 +16,7 @@ export class Provider extends Component {
       }`
     );
 
-    
     this.setState({ track_list: result.data.message.body.track_list });
-   
   }
   render() {
     return (
