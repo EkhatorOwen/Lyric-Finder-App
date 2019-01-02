@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
-import Spinner from '../../components/layout/Spinner'
+import Spinner from "../../components/layout/Spinner";
+import { Link } from "react-router-dom";
 
 class Lyrics extends Component {
   state = {
@@ -26,8 +27,8 @@ class Lyrics extends Component {
     //console.log(track.data.message.body.track.track_name)
 
     this.setState({
-      lyrics: lyrics.data.message.body.lyrics.lyrics_body,
-      track: track.data.message.body.track.track_name
+      lyrics: lyrics.data.message.body.lyrics,
+      track: track.data.message.body.track
     });
 
     //console.log(result.data.message.body.lyrics.lyrics_body)
@@ -35,9 +36,27 @@ class Lyrics extends Component {
 
   render() {
     const { track, lyrics } = this.state;
+    console.log(lyrics)
     return (
       <React.Fragment>
-        {lyrics&&track? (<h1>Hello</h1>) :(<Spinner/>)}
+        {lyrics && track ? (
+          <React.Fragment>
+            <Link to="/" className="btn btn-dark btn-sm mb-4">
+              Go Back
+            </Link>
+            <div className="card">
+              <h5 className="card-header">
+                {track.track_name} by{" "}
+                <span className="text-secondary">{track.artist_name}</span>
+              </h5>
+              <div className="card-body">
+                <p className="card-text">{lyrics.lyrics_body}</p>
+              </div>
+            </div>
+          </React.Fragment>
+        ) : (
+          <Spinner />
+        )}
       </React.Fragment>
     );
   }
