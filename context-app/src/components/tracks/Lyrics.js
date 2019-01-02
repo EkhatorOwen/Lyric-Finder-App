@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import Spinner from '../../components/layout/Spinner'
 
 class Lyrics extends Component {
   state = {
@@ -33,10 +34,11 @@ class Lyrics extends Component {
   }
 
   render() {
+    const { track, lyrics } = this.state;
     return (
-      <div>
-        <h1>Lyrics</h1>
-      </div>
+      <React.Fragment>
+        {lyrics&&track? (<h1>Hello</h1>) :(<Spinner/>)}
+      </React.Fragment>
     );
   }
 }
