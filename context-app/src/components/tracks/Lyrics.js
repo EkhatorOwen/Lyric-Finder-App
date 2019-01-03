@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import Spinner from "../../components/layout/Spinner";
+import  moment from 'moment'
 import { Link } from "react-router-dom";
 
 class Lyrics extends Component {
@@ -36,10 +37,12 @@ class Lyrics extends Component {
 
   render() {
     const { track, lyrics } = this.state;
-    console.log(lyrics)
+    let day = moment(track.updated_time,"MM-DD-YYYY")
+    console.log(day)
+   // console.log(typeof track.updated_time);
     return (
       <React.Fragment>
-        {lyrics && track ? (
+        {lyrics && track  ? (
           <React.Fragment>
             <Link to="/" className="btn btn-dark btn-sm mb-4">
               Go Back
@@ -53,6 +56,27 @@ class Lyrics extends Component {
                 <p className="card-text">{lyrics.lyrics_body}</p>
               </div>
             </div>
+            <ul className="list-group mt-3">
+              <li className="list-group-item">
+                <strong>Album ID</strong>: {track.album_id}
+              </li>
+              <li className="list-group-item">
+                <strong>Song Genre</strong>:{" "}
+                {
+                  track.primary_genres.music_genre_list[0].music_genre
+                    .music_genre_name
+                }
+              </li>
+              <li className="list-group-item">
+                <strong>Explicit Words</strong>: {track.explicit ? "No" : "Yes"}
+              </li>
+
+              <li className="list-group-item">
+                <strong>Release Date</strong>:{" "}
+                
+                {moment(track.updated_time).format('MM-DD-YYYY')} 
+              </li>
+            </ul>
           </React.Fragment>
         ) : (
           <Spinner />
