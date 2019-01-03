@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import Spinner from "../../components/layout/Spinner";
-import  moment from 'moment'
+import moment from "moment";
 import { Link } from "react-router-dom";
 
 class Lyrics extends Component {
@@ -37,12 +37,12 @@ class Lyrics extends Component {
 
   render() {
     const { track, lyrics } = this.state;
-    let day = moment(track.updated_time,"MM-DD-YYYY")
-    console.log(day)
-   // console.log(typeof track.updated_time);
+    let day = moment(track.updated_time, "MM-DD-YYYY");
+    console.log(day);
+    // console.log(typeof track.updated_time);
     return (
       <React.Fragment>
-        {lyrics && track  ? (
+        {lyrics && track ? (
           <React.Fragment>
             <Link to="/" className="btn btn-dark btn-sm mb-4">
               Go Back
@@ -73,8 +73,7 @@ class Lyrics extends Component {
 
               <li className="list-group-item">
                 <strong>Release Date</strong>:{" "}
-                
-                {moment(track.updated_time).format('MM-DD-YYYY')} 
+                {moment(track.updated_time).format("MM-DD-YYYY")}
               </li>
             </ul>
           </React.Fragment>
