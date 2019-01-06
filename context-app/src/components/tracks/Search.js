@@ -11,16 +11,17 @@ class Search extends Component {
     this.setState({ [e.target.name]: e.target.value });
   }
 
-   findTrack = (e) => {
+    findTrack = (e) => {
     e.preventDefault();
-    let track = this.state.trackTitle
-     axios.get(
-      `http://cors-anywhere.herokuapp.com/https://api.musixmatch.com/ws/1.1/track.search?q_track=${track}&page_size=10&page=1&s_track_rating=desc&apikey=${
+    let res = await axios.get(
+      `http://cors-anywhere.herokuapp.com/https://api.musixmatch.com/ws/1.1/track.search?q_track=${this.state.trackTitle}&page_size=10&page=1&s_track_rating=desc&apikey=${
         process.env.REACT_APP_MM_KEY
       }`
-    ).then(res=>{
-      console.log(res.data)
-    })
+    )
+    
+    // .then(res=>{
+       console.log(res.data)
+    // })
 
    
   }
