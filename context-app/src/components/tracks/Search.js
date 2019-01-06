@@ -27,7 +27,7 @@ class Search extends Component {
           type: 'SEARCH_TRACKS',
           payload: res.data.message.body.track_list
         })
-        console.log(res.data);
+        this.setState({trackTitle: ''})
       });
   };
 
