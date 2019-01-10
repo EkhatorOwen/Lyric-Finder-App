@@ -2,7 +2,7 @@
   "name": "context-app",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://ekhatorowen.github.io/Lyric-Finder-App/",
+  "homepage": "https://ekhatorowen.github.io/Lyric-Finder-App",
   "dependencies": {
     "axios": "^0.18.0",
     "moment": "^2.23.0",
