@@ -14,7 +14,6 @@ class Lyrics extends Component {
     //track.lyrics.get?track_id=15953433
 
     try {
-
       const lyrics = await axios.get(
         `https://cors-anywhere.herokuapp.com/https://api.musixmatch.com/ws/1.1/track.lyrics.get?track_id=${
           this.props.match.params.id
@@ -29,19 +28,11 @@ class Lyrics extends Component {
         lyrics: lyrics.data.message.body.lyrics,
         track: track.data.message.body.track
       });
+    } catch (e) {
+      console.log(e.message);
     }
-
-    catch(e){
-      console.log(e.message)
-    }
-
-   
-
-   
-
 
     //console.log(track.data.message.body.track.track_name)
-
 
     //console.log(result.data.message.body.lyrics.lyrics_body)
   }
